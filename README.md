@@ -4,8 +4,6 @@ MATLAB pipeline for identifying voxelwise corticostriatal coactivation states in
 
 ## What this repository contains
 
-This public-facing code release consolidates the current project pipeline into four parts:
-
 1. **State identification and metric extraction**
    - `matlab/core/Corticostriatal_Temporal_Dynamics_Final_All.m`
 2. **Task-period state occupancy analyses**
@@ -23,9 +21,9 @@ This public-facing code release consolidates the current project pipeline into f
 
 ## Conceptual overview
 
-The pipeline treats each striatal voxel's BOLD time series in the context of its five dominant frontal cortical inputs. For every frame-voxel instance, it computes a 5-dimensional corticostriatal coactivation vector, identifies high-amplitude "burst" frames using a reference thresholding scheme, clusters non-burst frames into recurrent resting coactivation states, and applies the resulting state definitions across all runs in a common reference space.
+The pipeline treats each striatal voxel's BOLD time series in the context of its five dominant frontal cortical inputs. For every frame-voxel instance, it computes a 5-dimensional corticostriatal coactivation vector, identifies high-amplitude "burst" frames using Gaussian mixture modeling, clusters non-burst frames into recurrent resting coactivation states using Louvain community detection, and applies the resulting state definitions across all runs in a common reference space.
 
-The main public outputs are:
+The main outputs are:
 - voxelwise/framewise state labels (`class_All`)
 - subject-level state occupancy, dwell, and transition metrics
 - burst composition/amplitude metrics
@@ -49,14 +47,9 @@ striatal-state-dynamics-pipeline/
 │   └── config/
 │       ├── path_config_template.m
 │       └── run_pipeline_example.m
-├── docs/
-│   ├── pipeline_overview.md
-│   ├── reproducibility_checklist.md
-│   └── methods_and_notes_source.txt
-├── examples/
-│   └── figure_generation_notes.md
-└── assets/
-    └── .gitkeep
+└──  docs/
+    └── pipeline_overview.md
+ 
 ```
 
 ## Inputs expected by the pipeline
@@ -65,10 +58,10 @@ striatal-state-dynamics-pipeline/
 - HCP-YA minimally preprocessed fMRI time series
 - denoised striatal CSVs for each run
 - denoised cortical CSVs for each run
-- right striatal mask (`DiscoveryReplication_rStriatum_Intersect_Tightened.nii.gz`)
-- Schaefer-100 frontal parcel time series restricted to the 21 right frontal parcels used in the project
+- Striatal mask 
+- Cortical Atlas
 
-### External timing files
+### Task timing files
 - `win.txt`
 - `loss.txt`
 - `win_LR.txt`
@@ -127,35 +120,9 @@ Each analysis script will load `user_paths.m` automatically if no config is supp
 
 These scripts generate the rest-vs-task and task-epoch summary tables used in the manuscript.
 
-## Suggested GitHub release language for the paper
-
-> Code used to identify corticostriatal coactivation states and reproduce the primary state-dynamic analyses is available at: **[insert GitHub URL]**.
-
-If you want a stronger reproducibility statement:
-
-> A curated MATLAB implementation of the corticostriatal coactivation-state pipeline, including run-level state identification and downstream rest/task statistical analyses, is available at: **[insert GitHub URL]**.
-
-## Current caveats
-
-- Project paths and run-specific locations are now loaded from a local config (`user_paths.m`).
-- Several helper toolboxes are expected to already exist on disk.
-- The repository does **not** currently include raw HCP data, denoised time series, or derived result files.
-- If you add derived timing or statistical scripts developed after the current draft, keep them in `matlab/analysis/` and document their provenance clearly.
-
-## Minimal checklist before uploading to GitHub
-
-- [ ] verify that your local `user_paths.m` is complete for all runs
-- [ ] add a license
-- [ ] add a short `CITATION.cff`
-- [ ] verify that each script runs from a clean MATLAB session
-- [ ] remove machine-specific user names and private directories
-- [ ] confirm that external dependencies are listed in the README
-- [ ] optionally add one small synthetic/example dataset or a dry-run example
-
-
 
 ## Standardized outputs
-All scripts now write generated files beneath a single configurable output root. Set `cfg.output_root` in `user_paths.m` to control where analysis tables, exports, and run-level results are written.
+All scripts write generated files beneath a single configurable output root. Set `cfg.output_root` in `user_paths.m` to control where analysis tables, exports, and run-level results are written.
 
 Recommended structure:
 - `outputs/results/<RUN_NAME>/efc_states_louvain_all_detectors.mat`
