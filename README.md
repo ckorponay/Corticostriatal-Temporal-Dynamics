@@ -122,7 +122,5 @@ Recommended structure:
 - `outputs/results/<RUN_NAME>/efc_states_louvain_all_detectors.mat`
 - `outputs/exports/<RUN_NAME>/efc_exports/`
 - `outputs/rest_vs_task_period_states/`
-- `outputs/rest_vs_task_interblock_states/`
-- `outputs/rest_vs_task_comparison_all6/`
 - `outputs/burst_person_vs_arousal_all6/`
 - `outputs/residualized_neural_predictors_all6/`
