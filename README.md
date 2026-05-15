@@ -4,14 +4,17 @@ MATLAB pipeline for identifying voxel-wise, frame-wise (i.e., TR-wise) striatal 
 
 ## What this repository contains
 
-1. **State identification and metric extraction**
+1. **Extraction and Organization of Striatal and Cortical BOLD Data**
+   - `Extract_Striatal_BOLD.sh`
+   - `Extract_Cortical_BOLD.sh`
+2. **State Identification and Metric Extraction**
    - `matlab/core/Corticostriatal_Temporal_Dynamics_Final_All.m`
-2. **Task Block and Resting-State Comparisons**
+3. **Task Block and Resting-State Comparisons**
    - `matlab/analysis/compare_rest_vs_task_period_states_pooledAcrossRuns_plusSequent.m`
-3. **Arousal/task decomposition and residualized behavioral models**
+4. **Arousal/task decomposition and residualized behavioral models**
    - `matlab/analysis/disentangle_burst_person_vs_arousal_all6.m`
    - `matlab/analysis/analyze_residualized_neural_predictors_all6.m`
-4. **Documentation and configuration templates**
+5. **Documentation and configuration templates**
    - `matlab/config/path_config_template.m`
    - `docs/pipeline_overview.md`
 
