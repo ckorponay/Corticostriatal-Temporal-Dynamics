@@ -55,8 +55,8 @@ striatal-state-dynamics-pipeline/
 ## Inputs expected by the pipeline
 
 ### Neuroimaging inputs
-- CSVs of striatal voxel-wise, frame-wise BOLD signal magnitudes for each subject for each run from denoised data
-- CSVs of cortical ROI-wise, frame-wise BOLD signal magnitudes for each subject for each run from denoised data
+- CSVs of striatal voxel-wise, frame-wise BOLD signal magnitudes for each subject for each run from denoised fMRI data
+- CSVs of cortical ROI-wise, frame-wise BOLD signal magnitudes for each subject for each run from denoised fMRI data
 - Striatal Mask 
 - Cortical Atlas
 
