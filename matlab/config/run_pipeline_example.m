@@ -21,9 +21,8 @@ fprintf('2) After all runs are processed, execute the downstream summary scripts
 % Corticostriatal_Temporal_Dynamics_Final_All(cfg, 'GAMBLING_RL');
 % Corticostriatal_Temporal_Dynamics_Final_All(cfg, 'GAMBLING_LR');
 %
-% compare_rest_vs_task_interblock_states(cfg);
-% compare_rest_vs_task_period_states(cfg);
-% rest_vs_task_statistical_comparison_avgedRest(cfg);
+% compare_rest_vs_task_period_states_pooledAcrossRuns_plusSequent(cfg);
+
 
 fprintf('Loaded config from user_paths.m or supplied config source.
 ');
