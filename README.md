@@ -1,16 +1,14 @@
 # Striatal State Dynamics in Human fMRI
 
-MATLAB pipeline for identifying voxel-wise, frame-wise (i.e., TR-wise) striatal coactivation states with frontal cortex in HCP-YA fMRI, exporting subject/run-level summary metrics, decomposing arousal-dependent and -independent effects, comparing resting-state versus task, and analyzing relationships with behavioral phenotypes.
+MATLAB pipeline for identifying voxel-wise, frame-wise (i.e., TR-wise) striatal coactivation states with frontal cortex in HCP-YA fMRI, exporting subject/run-level summary metrics, decomposing arousal-dependent and -independent effects, comparing dynamics across resting-state and task blocks, and analyzing relationships with behavioral phenotypes.
 
 ## What this repository contains
 
 1. **State identification and metric extraction**
    - `matlab/core/Corticostriatal_Temporal_Dynamics_Final_All.m`
-2. **Task-period state occupancy analyses**
+2. **Task Block and Resting-State Comparisons**
    - `matlab/analysis/compare_rest_vs_task_period_states.m`
    - `matlab/analysis/compare_rest_vs_task_interblock_states.m`
-3. **Pooled rest-vs-task metric comparisons**
-   - `matlab/analysis/rest_vs_task_statistical_comparison_avgedRest.m`
 4. **Arousal/task decomposition and residualized behavioral models**
    - `matlab/analysis/disentangle_burst_person_vs_arousal_all6.m`
    - `matlab/analysis/analyze_residualized_neural_predictors_all6.m`
