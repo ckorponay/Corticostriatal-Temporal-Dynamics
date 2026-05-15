@@ -32,6 +32,9 @@ striatal-state-dynamics-pipeline/
 ├── README.md
 ├── .gitignore
 ├── matlab/
+│   ├── pre_analysis/
+|   |   ├── Extract_Striatal_BOLD.sh
+│   │   └── Extract_Cortical_BOLD.sh
 │   ├── core/
 │   │   └── Corticostriatal_Temporal_Dynamics_Final_All.m
 │   ├── analysis/
