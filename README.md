@@ -49,10 +49,9 @@ striatal-state-dynamics-pipeline/
 ## Inputs expected by the pipeline
 
 ### Neuroimaging inputs
-- HCP-YA minimally preprocessed fMRI time series
-- denoised striatal CSVs for each run
-- denoised cortical CSVs for each run
-- Striatal mask 
+- CSVs of striatal voxel-wise, frame-wise BOLD signal magnitudes for each subject for each run from denoised data
+- CSVs of cortical ROI-wise, frame-wise BOLD signal magnitudes for each subject for each run from denoised data
+- Striatal Mask 
 - Cortical Atlas
 
 ### Task timing files
@@ -103,17 +102,12 @@ This writes the run-level `.mat` results file (typically `efc_states_louvain_all
 After all acquisitions have been processed:
 
 ```matlab
-results = compare_rest_vs_task_interblock_states();
-results = compare_rest_vs_task_period_states();
-results = rest_vs_task_statistical_comparison_avgedRest();
+results = compare_rest_vs_task_period_states_pooledAcrossRuns_plusSequent();
 results = disentangle_burst_person_vs_arousal_all6();
 regression_results = analyze_residualized_neural_predictors_all6();
 ```
 
 Each analysis script will load `user_paths.m` automatically if no config is supplied.
-
-These scripts generate the rest-vs-task and task-epoch summary tables used in the manuscript.
-
 
 ## Standardized outputs
 All scripts write generated files beneath a single configurable output root. Set `cfg.output_root` in `user_paths.m` to control where analysis tables, exports, and run-level results are written.
