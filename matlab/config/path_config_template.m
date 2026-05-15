@@ -15,7 +15,7 @@ cfg.toolbox.nifti = '/path/to/NIfTI_20140122';
 cfg.toolbox.bct   = '/path/to/BCT';
 
 % Shared resources
-cfg.mask_path = '/path/to/DiscoveryReplication_rStriatum_Intersect_Tightened.nii.gz';
+cfg.mask_path = '/path/to/Striatal_Mask.nii.gz';
 cfg.nifti_img_root = '/path/to/nifti/export/root';
 
 % Template / standardization files
@@ -24,7 +24,7 @@ cfg.rest_params_file   = '/path/to/rest_standardization_params.mat';
 
 
 % Spreadsheet / behavioral metadata
-cfg.subject_vars_file = '/path/to/Gambling_Subject_Vars_n407.xlsx';
+cfg.subject_vars_file = '/path/to/Behavioral_Demographic_Subject_Data.xlsx';
 
 % Timing files
 cfg.timing.win_rl  = '/path/to/win.txt';
