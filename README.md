@@ -1,6 +1,6 @@
 # Striatal State Dynamics in Human fMRI
 
-MATLAB pipeline for identifying voxelwise corticostriatal coactivation states in HCP-YA fMRI, exporting subject/run-level summary metrics, extracting arousal-related effects, comparing resting-state and task dynamics, and analyzing relationships with behavioral phenotypes.
+MATLAB pipeline for identifying voxel-wise, frame-wise (i.e., TR-wise) striatal coactivation states with frontal cortex in HCP-YA fMRI, exporting subject/run-level summary metrics, decomposing arousal-dependent and -independent effects, comparing resting-state versus task, and analyzing relationships with behavioral phenotypes.
 
 ## What this repository contains
 
