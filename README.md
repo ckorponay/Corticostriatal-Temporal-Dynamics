@@ -31,23 +31,23 @@ The main outputs are:
 ## Recommended repository structure
 
 ```text
-striatal-state-dynamics-pipeline/
+Corticostriatal-Temporal-Dynamics/
 ├── README.md
 ├── .gitignore
 ├── matlab/
 │   ├── pre_analysis/
-|   |   ├── Extract_Striatal_BOLD.sh
+│   │   ├── Extract_Striatal_BOLD.sh
 │   │   └── Extract_Cortical_BOLD.sh
 │   ├── core/
 │   │   └── Corticostriatal_Temporal_Dynamics_Final_All.m
 │   ├── analysis/
-│   │   ├── compare_rest_vs_task_period_states_pooledAcrossRuns_plusSequent.m
+│   │   ├── compare_rest_vs_task_period_states_pooledAcrossRuns_plusSequentialByRun_plusTaskOnComparisons.m
 │   │   ├── disentangle_burst_person_vs_arousal_all6.m
 │   │   └── analyze_residualized_neural_predictors_all6.m
 │   └── config/
 │       ├── path_config_template.m
 │       └── run_pipeline_example.m
-└──  docs/
+└── docs/
     └── pipeline_overview.md
  
 ```
@@ -59,6 +59,8 @@ striatal-state-dynamics-pipeline/
 - CSVs of cortical ROI-wise, frame-wise BOLD signal magnitudes for each subject for each run from denoised fMRI data
 - Striatal Mask 
 - Cortical Atlas
+
+Extract_Striatal_BOLD.sh and Extract_Cortical_BOLD.sh generate the subject-level run-specific CSV inputs expected by the MATLAB pipeline. Their output locations should be set to match the corresponding paths configured in cfg.runs.<RUN_NAME> within user_paths.m
 
 ### Task timing files
 - `win.txt`
@@ -80,7 +82,10 @@ striatal-state-dynamics-pipeline/
 ### Step 1. Edit paths and acquisition-specific settings
 Before running anything, duplicate `matlab/config/path_config_template.m` to `user_paths.m` and edit it for your local environment.
 
-### Step 2. Run the main state-identification script separately for each acquisition
+### Step 2. Run the BOLD extraction scripts in the terminal using AFNI
+These will generate the subject-level run-specific CSV inputs expected by the MATLAB pipeline.
+
+### Step 3. Run the main state-identification script separately for each acquisition
 Typical acquisitions:
 - `REST1_LR`
 - `REST1_RL`
@@ -92,19 +97,19 @@ Typical acquisitions:
 Populate the corresponding `cfg.runs.<RUN_NAME>` entry in `user_paths.m`, then run:
 
 ```matlab
-results = Corticostriatal_Temporal_Dynamics_Final_All([], GAMBLING_RL);
+results = Corticostriatal_Temporal_Dynamics_Final_All([], 'GAMBLING_RL');
 ```
 
 or, with an explicit config struct/function handle:
 
 ```matlab
 cfg = user_paths();
-results = Corticostriatal_Temporal_Dynamics_Final_All(cfg, REST1_LR);
+results = Corticostriatal_Temporal_Dynamics_Final_All(cfg, 'REST1_LR');
 ```
 
 This writes the run-level `.mat` results file (typically `efc_states_louvain_all_detectors.mat`) plus optional CSV, plot, and NIfTI exports.
 
-### Step 3. Run summary analyses
+### Step 4. Run summary analyses
 After all acquisitions have been processed:
 
 ```matlab
