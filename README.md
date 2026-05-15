@@ -23,7 +23,7 @@ The main outputs are:
 - voxelwise/framewise state labels (`class_All`)
 - subject-level state occupancy, dwell, and transition metrics
 - burst composition/amplitude metrics
-- run-level CSV and MAT exports used for the figures and statistics in the manuscript
+- run-level CSV and MAT exports
 
 ## Recommended repository structure
 
@@ -35,9 +35,7 @@ striatal-state-dynamics-pipeline/
 │   ├── core/
 │   │   └── Corticostriatal_Temporal_Dynamics_Final_All.m
 │   ├── analysis/
-│   │   ├── compare_rest_vs_task_period_states.m
-│   │   ├── compare_rest_vs_task_interblock_states.m
-│   │   ├── rest_vs_task_statistical_comparison_avgedRest.m
+│   │   ├── compare_rest_vs_task_period_states_pooledAcrossRuns_plusSequent.m
 │   │   ├── disentangle_burst_person_vs_arousal_all6.m
 │   │   └── analyze_residualized_neural_predictors_all6.m
 │   └── config/
